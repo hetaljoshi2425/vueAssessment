@@ -4,7 +4,7 @@
       <div class="col-md-12 mb-5">
         <div class="d-flex align-items-center">
           <label class="w-20"> Creation Time </label>
-          <VueDatePicker v-model="selectedDate" range multi-calendars :enable-time-picker="false" />
+          <VueDatePicker v-model="selectedDate" range multi-calendars :enable-time-picker="false" @cleared="clearDatePicker"/>
         </div>
       </div>
     </div>
@@ -159,6 +159,10 @@ export default {
           opportunity?.lastUpdateTime ? moment(opportunity.lastUpdateTime).format('YYYY-MM-DD') : '',
         ])
       });
+    },
+
+    cleared(){
+      this.selectedDate = []
     }
   },
   watch:{
